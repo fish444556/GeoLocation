@@ -47,18 +47,18 @@
             }
 
 
-        // function initMap() {
-        //         var map = new google.maps.Map(document.getElementById('map'), {
-        //           zoom: 8,
-        //           center: {lat: 40.731, lng: -73.997}
-        //       });
-        //         var geocoder = new google.maps.Geocoder;
-        //         var infowindow = new google.maps.InfoWindow;
+        function initMap() {
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 8,
+                  center: {lat: 40.731, lng: -73.997}
+              });
+                var geocoder = new google.maps.Geocoder;
+                var infowindow = new google.maps.InfoWindow;
 
-        //         document.getElementById('submit').addEventListener('click', function() {
-        //           geocodeLatLng(geocoder, map, infowindow);
-        //       });
-        //     }
+                document.getElementById('submit').addEventListener('click', function() {
+                  geocodeLatLng(geocoder, map, infowindow);
+              });
+            }
 
         //     function geocodeLatLng(geocoder, map, infowindow) {
         //         // var input = document.getElementById('latlng').value;
@@ -84,14 +84,14 @@
         // });
             // }
     </script>
-    <!-- <script async defer
+    <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWzmKg6CmhVdiTjc6IIFonVKv263hK0Go&callback=initMap">
-    </script> -->
+    </script>
 </head>
 <body>
     <a href=" " id="get_location">Get location</a >
     <div id="map">
-        <iframe id="google_map" width="1000" height="800" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk?output=embed" frameborder="0"></iframe>
+        <!-- <iframe id="google_map" width="1000" height="800" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk?output=embed" frameborder="0"></iframe> -->
         </div>
     <!-- <form action=""> -->
         <label for="username">Please enter username:</label>
