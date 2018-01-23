@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Location Tracking</title>
+
+    <script>
+        window.onload = function () {
+            document.getElementById('submit').onclick = function () {
+                // alert('fdffd')
+                navigator.geolocation.getCurrentPosition(c);
+            }
+
+
+            document.getElementById('get_location').onclick = function () {
+                console.log('33333333333')
+                navigator.geolocation.getCurrentPosition(c);
+
+                return false;
+            }
+
+            var c = function (pos) {
+                var lat    = pos.coords.latitude,
+                long   = pos.coords.longitude,
+                coords = lat + ', ' + long;
+                console.log('lat: ' + lat);
+                console.log('long: ' + long);
+                console.log('long: ' + long);
+                // return coords;
+                // initMap(lat, long);
+                // document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk/?q='+ coords +'&z=60&output=embed');
+            }
+
+
+        }
+
+        var c = function (pos) {
+                var lat    = pos.coords.latitude,
+                long   = pos.coords.longitude,
+                coords = lat + ', ' + long;
+                console.log('lat: ' + lat);
+                console.log('long: ' + long);
+                console.log('long: ' + long);
+                // return coords;
+                // initMap(lat, long);
+                // document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk/?q='+ coords +'&z=60&output=embed');
+            }
+
+
+        // function initMap() {
+        //         var map = new google.maps.Map(document.getElementById('map'), {
+        //           zoom: 8,
+        //           center: {lat: 40.731, lng: -73.997}
+        //       });
+        //         var geocoder = new google.maps.Geocoder;
+        //         var infowindow = new google.maps.InfoWindow;
+
+        //         document.getElementById('submit').addEventListener('click', function() {
+        //           geocodeLatLng(geocoder, map, infowindow);
+        //       });
+        //     }
+
+        //     function geocodeLatLng(geocoder, map, infowindow) {
+        //         // var input = document.getElementById('latlng').value;
+        //         var input = navigator.geolocation.getCurrentPosition(c);
+        //         var latlngStr = input.split(',', 2);
+        //         var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+        //         geocoder.geocode({'location': latlng}, function(results, status) {
+        //           if (status === 'OK') {
+        //             if (results[0]) {
+        //               map.setZoom(11);
+        //               var marker = new google.maps.Marker({
+        //                 position: latlng,
+        //                 map: map
+        //             });
+        //               infowindow.setContent(results[0].formatted_address);
+        //               infowindow.open(map, marker);
+        //           } else {
+        //               window.alert('No results found');
+        //           }
+        //       } else {
+        //         window.alert('Geocoder failed due to: ' + status);
+        //     }
+        // });
+            // }
+    </script>
+    <!-- <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWzmKg6CmhVdiTjc6IIFonVKv263hK0Go&callback=initMap">
+    </script> -->
+</head>
+<body>
+    <a href=" " id="get_location">Get location</a >
+    <div id="map">
+        <iframe id="google_map" width="1000" height="800" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk?output=embed" frameborder="0"></iframe>
+        </div>
+    <!-- <form action=""> -->
+        <label for="username">Please enter username:</label>
+        <input type="text" name="username" required>
+        <button id='submit' >Save info to Database</button>
+        <!-- </form> -->
+
+    </body>
+    </html>
