@@ -75,6 +75,7 @@
         alert('Please enter username');
         return;
       }
+
       let res = navigator.geolocation.getCurrentPosition( function (pos) {
         var lat    = pos.coords.latitude,
         long   = pos.coords.longitude,
@@ -98,7 +99,6 @@
             window.alert('Geocoder failed due to: ' + status);
           }
         });
-
       });
     }
   </script>
