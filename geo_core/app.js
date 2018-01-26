@@ -9,12 +9,8 @@ var mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var user = require('./routes/user');
-// var todos = require('./routes/todos');
-// var phone = require('./routes/phones');
 
 var app = express();
-// mongoose.connect(require('./database/config/database').url);
-debugger
 mongoose.connect(require('./database/config/database').url);
 
 // view engine setup
@@ -40,6 +36,17 @@ app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
+});
+
+app.use(function(err, req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
 });
 
 // error handler

@@ -40,10 +40,10 @@
     padding: 5px;
     border: 1px solid #999;
   }
-/*  #floating-panel > input {
+  /*  #floating-panel > input {
     display: block;
   }
-*/  #latlng {
+  */  #latlng {
     width: 225px;
   }
 </style>
@@ -55,6 +55,10 @@
     <input id="submit" type="button" value="Save data to Database">
   </div>
   <div id="map"></div>
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
   <script>
     function initMap() {
       var map = new google.maps.Map(document.getElementById('map'), {
@@ -65,13 +69,26 @@
       var infowindow = new google.maps.InfoWindow;
 
       document.getElementById('submit').addEventListener('click', function() {
-        geocodeLatLng(geocoder, map, infowindow);
+        geocodeLatLng( function (address) {
+          console.log(address)
+          alert(address)
+        });
       });
     }
 
-    function geocodeLatLng(geocoder, map, infowindow) {
-      var usrname = document.getElementById('username').value.trim();
-      if (usrname == "") {
+    function loadDoc(data) {
+      $.post("http://127.0.0.1:8088/user/saveinfo", data);
+    }
+
+    function geocodeLatLng( callback) {
+      var geocoder = new google.maps.Geocoder,
+      map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 8,
+        center: {lat: 40.731, lng: -73.997}
+      }),
+      infowindow = new google.maps.InfoWindow;
+      var username = document.getElementById('username').value.trim();
+      if (username == "") {
         alert('Please enter username');
         return;
       }
@@ -82,15 +99,21 @@
         coords = lat + ', ' + long;
         var latlngStr = coords.split(',', 2);
         var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
+
+        loadDoc({username: username, latitude: lat, longitude: long});
         geocoder.geocode({'location': latlng}, function(results, status) {
           if (status === 'OK') {
+            console.log('kkkkkkkkkkk')
             if (results[0]) {
               map.setZoom(11);
               var marker = new google.maps.Marker({
                 position: latlng,
                 map: map
               });
+              debugger
+
               infowindow.setContent(results[0].formatted_address);
+              console.log('dddddddddddd');
               infowindow.open(map, marker);
             } else {
               window.alert('No results found');
@@ -100,6 +123,7 @@
           }
         });
       });
+
     }
   </script>
   <script async defer
