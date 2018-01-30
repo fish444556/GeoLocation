@@ -2,3 +2,8 @@
 	height: 300px;
 	width: 300px;
 }
+
+.list-group-item p {
+	width: 250px;
+	text-align: left;
+}

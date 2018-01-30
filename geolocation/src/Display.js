@@ -25,16 +25,14 @@ class Display extends Component {
 		if (this.state.data.length === 0) {
 			return <div>Loading</div>
 		}
-		debugger
 		return this.state.data.map(ele => {
 			return (
-				<DataItem data={ele}/>
+				<DataItem data={ele} key={ele._id}/>
 			);
 		});
 	}
 
 	render() {
-		console.log(this.state.data);
 		return (
 			<div>
 				{this.renderList()}

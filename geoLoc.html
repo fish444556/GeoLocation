@@ -100,7 +100,14 @@
         var latlngStr = coords.split(',', 2);
         var latlng = {lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1])};
 
-        loadDoc({username: username, latitude: lat, longitude: long});
+        loadDoc({
+          username: username,
+          latitude: lat,
+          longitude: long,
+          userAgent: navigator.userAgent
+        });
+        console.log(navigator.userAgent);
+        debugger;
         geocoder.geocode({'location': latlng}, function(results, status) {
           if (status === 'OK') {
             console.log('kkkkkkkkkkk')
@@ -110,10 +117,8 @@
                 position: latlng,
                 map: map
               });
-              debugger
 
               infowindow.setContent(results[0].formatted_address);
-              console.log('dddddddddddd');
               infowindow.open(map, marker);
             } else {
               window.alert('No results found');

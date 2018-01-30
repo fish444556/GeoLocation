@@ -6,20 +6,26 @@ import './DataItem.css';
 class GoogleMap extends Component {
 	componentDidMount() {
 
-		const { latitude, longitude } = this.props.data;
+		const { latitude, longitude, address } = this.props.data;
 		const google = window.google;
-		debugger
-		new google.maps.Map(this.refs.map, {
+		const map = new google.maps.Map(this.refs.map, {
 			zoom: 12,
 			center: {
 				lat: latitude,
 				lng: longitude
 			}
 		});
+		const latlng = {lat: latitude, lng: longitude};
+		const marker = new google.maps.Marker({
+      position: latlng,
+      map: map
+    });
+		const infowindow = new google.maps.InfoWindow;
+    infowindow.setContent(address);
+    infowindow.open(map, marker);
 	}
 
 	render() {
-		// debugger
 		return (
 			<div ref="map" className="map-item"/>
 		);
