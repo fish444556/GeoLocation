@@ -34,6 +34,7 @@ app.post('/saveinfo', function(req, res) {
     longitude: req.body.longitude,
     address: req.body.address,
     userAgent: req.body.userAgent,
+    time: new Date()
   }, function(err, user) {
     if (err)
       res.send(err);

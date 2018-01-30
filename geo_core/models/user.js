@@ -5,5 +5,6 @@ module.exports=mongoose.model('users',{
     latitude: Number,
     longitude: Number,
     address: String,
-    userAgent: String
+    userAgent: String,
+    time: String
 });
