@@ -14,6 +14,18 @@ app.use(cors({
   credentials: true
 }));
 
+// fetch data
+app.get('/', function(req, res) {
+  User.find({
+  }, function(err, info) {
+    if (err)
+      res.send(err);
+    res.json(info);
+  });
+
+});
+
+
 // save user infomation
 app.post('/saveinfo', function(req, res) {
   User.create({
@@ -21,6 +33,7 @@ app.post('/saveinfo', function(req, res) {
     latitude: req.body.latitude,
     longitude: req.body.longitude,
     address: req.body.address,
+    userAgent: req.body.userAgent,
   }, function(err, user) {
     if (err)
       res.send(err);
