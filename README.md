@@ -10,6 +10,7 @@ Record User Infomation ( Username, Latitude, Longitude, Address, DeviceInfo) to 
 - [x] Send Request to back-end
 - [ ] Add search box 
 - [ ] Record multiple address of the same user and display on the map 
+- [ ] Pagination
 
 ### Back end
 #### geo_core
